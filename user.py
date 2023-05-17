@@ -8,7 +8,15 @@ class User():
         self.last_name = last_name
         self.age = age
         self.info = info
-        
+        self.login_attempts = 0
+    
+    def increment_login_attempts(self):
+        """Добавляет + 1 к login_atempts"""
+        self.login_attempts += 1
+    
+    
+    def reset_login_atempts(self):
+        self.login_attempts = 0
     
     def user_info(self):
         """Выводит имеющеюся информацию о пользователе"""
@@ -24,11 +32,24 @@ class User():
         """Выводит индивидуальное приветвие"""
         print(f'Добро пожаловать, {self.first_name.title()} {self.last_name.title()}!')
 
+class Admin(User):
+    """Описывает права администратора на основе суперкласса User"""
+    
+    def __init__(self, username, first_name, last_name, age, *info):
+        """Инициализация атрибутов класса"""
+        super().__init__(username, first_name, last_name, age, *info)
+        
+    
+    def show_privileges(self):
+        """Права администратора"""
+        print('---Права администратора---')
+        print('-добавление сообщений')
+        print('-удаление пользователей')
+        print('-выдача банов')       
 
-dachesa = User('Dachesa', 'Daniil', 'Chesakov', 18, 'Катаеться на трюковом самокате', 'Любит програмировать', 'Катаеться на сноуборде')
-dachesa.user_info()
+
+
+dachesa = Admin('Dachesa', 'Daniil', 'Chesakov', 18, 'Катаеться на трюковом самокате', 'Любит програмировать', 'Катаеться на сноуборде')
+dachesa.show_privileges()
 
 smolusha = User('smolusha04', 'Maria', 'Smolskаya', 18, 'Прекрасный художник', 'Аниме девочка', 'Суккубчик', 'Милейший человек на свете')
-smolusha.user_info()
-dachesa.greeting_user()
-smolusha.greeting_user()
