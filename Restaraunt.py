@@ -31,6 +31,7 @@ class Restaraunt():
     def set_number_served(self, quantity):
         """+ количество обслужеваемых людей"""
         self.quantity_res += quantity
+    
 
 class IceCreamStand(Restaraunt):
     "Описывает фургончик с мороженным"

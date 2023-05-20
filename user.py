@@ -38,18 +38,25 @@ class Admin(User):
     def __init__(self, username, first_name, last_name, age, *info):
         """Инициализация атрибутов класса"""
         super().__init__(username, first_name, last_name, age, *info)
+        self.privileges = Privileges()
         
     
+  
+class Privileges():
+    
+    def __init__(self):
+        self.privilege = ['-добавление сообщений', '-удаление пользователей', '-выдача банов'] 
+
+
     def show_privileges(self):
         """Права администратора"""
         print('---Права администратора---')
-        print('-добавление сообщений')
-        print('-удаление пользователей')
-        print('-выдача банов')       
+        for privileges in self.privilege:
+            print(f'-{privileges}')
 
 
 
 dachesa = Admin('Dachesa', 'Daniil', 'Chesakov', 18, 'Катаеться на трюковом самокате', 'Любит програмировать', 'Катаеться на сноуборде')
-dachesa.show_privileges()
+dachesa.privileges.show_privileges()
 
 smolusha = User('smolusha04', 'Maria', 'Smolskаya', 18, 'Прекрасный художник', 'Аниме девочка', 'Суккубчик', 'Милейший человек на свете')
